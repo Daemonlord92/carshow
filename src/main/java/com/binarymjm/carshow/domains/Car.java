@@ -13,20 +13,30 @@ public class Car {
     private Long id;
     private String make;
     private String model;
+    private String registerNumber;
     private int year;
     private String color;
-    private Long owner_id;
+    private Long ownerId;
+    private double price;
 
     public Car() {
-
     }
 
-    public Car(String make, String model, int year, String color, Long owner_id) {
+    public Car(
+               String make,
+               String model,
+               String registerNumber,
+               int year,
+               String color,
+               Long ownerId,
+               double price) {
         this.make = make;
         this.model = model;
+        this.registerNumber = registerNumber;
         this.year = year;
         this.color = color;
-        this.owner_id = owner_id;
+        this.ownerId = ownerId;
+        this.price = price;
     }
 
     public Long getId() {
@@ -69,12 +79,29 @@ public class Car {
         this.color = color;
     }
 
-    public Long getOwner_id() {
-        return owner_id;
+
+    public String getRegisterNumber() {
+        return registerNumber;
     }
 
-    public void setOwner_id(Long owner_id) {
-        this.owner_id = owner_id;
+    public void setRegisterNumber(String registerNumber) {
+        this.registerNumber = registerNumber;
+    }
+
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     @Override
@@ -83,9 +110,11 @@ public class Car {
                 "id=" + id +
                 ", make='" + make + '\'' +
                 ", model='" + model + '\'' +
+                ", registerNumber='" + registerNumber + '\'' +
                 ", year=" + year +
                 ", color='" + color + '\'' +
-                ", owner_id=" + owner_id +
+                ", ownerId=" + ownerId +
+                ", price=" + price +
                 '}';
     }
 }
