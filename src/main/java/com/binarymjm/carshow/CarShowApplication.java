@@ -35,5 +35,7 @@ public class CarShowApplication implements CommandLineRunner {
                 new Car("Ford", "F-150", "F150-32442", 2024,"Grey", 0l, 75000.00)
         );
         carRepository.saveAll(cars);
+
+        carRepository.findAll().forEach(car -> logger.info(car.getMake()+" "+ car.getModel()));
     }
 }
