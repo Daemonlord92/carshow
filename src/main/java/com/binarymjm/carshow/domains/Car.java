@@ -1,9 +1,6 @@
 package com.binarymjm.carshow.domains;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Car {
@@ -16,8 +13,11 @@ public class Car {
     private String registerNumber;
     private int year;
     private String color;
-    private Long ownerId;
     private double price;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "owner")
+    private Owner owner;
 
     public Car() {
     }
@@ -28,15 +28,30 @@ public class Car {
                String registerNumber,
                int year,
                String color,
-               Long ownerId,
                double price) {
         this.make = make;
         this.model = model;
         this.registerNumber = registerNumber;
         this.year = year;
         this.color = color;
-        this.ownerId = ownerId;
         this.price = price;
+    }
+
+    public Car(
+            String make,
+            String model,
+            String registerNumber,
+            int year,
+            String color,
+            double price,
+            Owner owner) {
+        this.make = make;
+        this.model = model;
+        this.registerNumber = registerNumber;
+        this.year = year;
+        this.color = color;
+        this.price = price;
+        this.owner = owner;
     }
 
     public Long getId() {
@@ -88,13 +103,6 @@ public class Car {
         this.registerNumber = registerNumber;
     }
 
-    public Long getOwnerId() {
-        return ownerId;
-    }
-
-    public void setOwnerId(Long ownerId) {
-        this.ownerId = ownerId;
-    }
 
     public double getPrice() {
         return price;
@@ -102,6 +110,14 @@ public class Car {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
     }
 
     @Override
@@ -113,7 +129,6 @@ public class Car {
                 ", registerNumber='" + registerNumber + '\'' +
                 ", year=" + year +
                 ", color='" + color + '\'' +
-                ", ownerId=" + ownerId +
                 ", price=" + price +
                 '}';
     }
