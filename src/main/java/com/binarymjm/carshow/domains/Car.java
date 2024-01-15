@@ -14,16 +14,18 @@ public class Car {
     private String make;
     private String model;
     private int year;
+    private String color;
     private Long owner_id;
 
     public Car() {
 
     }
 
-    public Car(String make, String model, int year, Long owner_id) {
+    public Car(String make, String model, int year, String color, Long owner_id) {
         this.make = make;
         this.model = model;
         this.year = year;
+        this.color = color;
         this.owner_id = owner_id;
     }
 
@@ -59,6 +61,14 @@ public class Car {
         this.year = year;
     }
 
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
     public Long getOwner_id() {
         return owner_id;
     }
@@ -74,6 +84,7 @@ public class Car {
                 ", make='" + make + '\'' +
                 ", model='" + model + '\'' +
                 ", year=" + year +
+                ", color='" + color + '\'' +
                 ", owner_id=" + owner_id +
                 '}';
     }
